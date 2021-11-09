@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="while-计算一个人活了几天主思路：对每一年都进行判断（即需要用到循环，这里用while比较合适），然后一天一天地相加。 *变量的取名要清晰 *每个月加完后，初始日为0；每年加完后，初始月为0. *c语言中 d&#x3D;n? 29:28;      一个判断： d&#x3D;n吗？  等于，d&#x3D;29 不等于，d&#x3D;28  这是一个条件表达式，满足条件，执行：前的，不满足，执行后边的。 123456789101112">
+<meta property="og:type" content="article">
+<meta property="og:title" content="while计算一个人活了几天">
+<meta property="og:url" content="http://example.com/2021/11/07/My-New-Post/index.html">
+<meta property="og:site_name" content="MHF&#39;s notes">
+<meta property="og:description" content="while-计算一个人活了几天主思路：对每一年都进行判断（即需要用到循环，这里用while比较合适），然后一天一天地相加。 *变量的取名要清晰 *每个月加完后，初始日为0；每年加完后，初始月为0. *c语言中 d&#x3D;n? 29:28;      一个判断： d&#x3D;n吗？  等于，d&#x3D;29 不等于，d&#x3D;28  这是一个条件表达式，满足条件，执行：前的，不满足，执行后边的。 123456789101112">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-07T12:37:48.000Z">
+<meta property="article:modified_time" content="2021-11-09T13:51:10.425Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C语言，while">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>while计算一个人活了几天 - MHF&#39;s notes</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":"tur","baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MHF&#39;s notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="while计算一个人活了几天">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-07 20:37" pubdate>
+        2021年11月7日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">while计算一个人活了几天</h1>
+            
+            <div class="markdown-body">
+              <h1 id="while-计算一个人活了几天"><a href="#while-计算一个人活了几天" class="headerlink" title="while-计算一个人活了几天"></a>while-计算一个人活了几天</h1><p>主思路：对每一年都进行判断（即需要用到循环，这里用while比较合适），然后一天一天地相加。</p>
+<p>*变量的取名要清晰</p>
+<p>*每个月加完后，初始日为0；每年加完后，初始月为0.</p>
+<p>*c语言中 d=n? 29:28;      一个判断： d=n吗？</p>
+<ol>
+<li>等于，d=29</li>
+<li>不等于，d=28</li>
+</ol>
+<p>这是一个条件表达式，满足条件，执行：前的，不满足，执行后边的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>        <span class="hljs-keyword">long</span> count = <span class="hljs-number">0</span>; <span class="hljs-comment">// count用于存放一共活了多少天</span><br>        <span class="hljs-keyword">int</span> year1, year2; <span class="hljs-comment">// year1是你的生日年份，year2是今天的年份</span><br>        <span class="hljs-keyword">int</span> month1, month2;<br>        <span class="hljs-keyword">int</span> day1, day2;<br>        <span class="hljs-keyword">int</span> days[] = &#123;<span class="hljs-number">31</span>, <span class="hljs-number">28</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>&#125;;<br><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入你的生日（如1988-05-20）：&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>, &amp;year1, &amp;month1, &amp;day1);<br><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入今年日期（如2016-03-28）：&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>, &amp;year2, &amp;month2, &amp;day2);<br><br>        <span class="hljs-keyword">while</span> (year1 &lt;= year2)<br>        &#123;<br>                days[<span class="hljs-number">1</span>] = (year1 % <span class="hljs-number">400</span> == <span class="hljs-number">0</span> || (year1 % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year1 % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>)) ? <span class="hljs-number">29</span> : <span class="hljs-number">28</span>;<br>												 <span class="hljs-comment">///对是否为闰年进行判断，同时对重新赋值。</span><br><br>                <span class="hljs-keyword">while</span> (month1 &lt;= <span class="hljs-number">12</span>)<br>                &#123;<br>                        <span class="hljs-keyword">while</span> (day1 &lt;= days[month1 - <span class="hljs-number">1</span>])<br>                        &#123;<br>                                <span class="hljs-keyword">if</span> (year1 == year2 &amp;&amp; month1 == month2 &amp;&amp; day1 == day2)<br>                                <span class="hljs-comment">//此个if很关键，即在每次年月日判断的终点里不断检查是不是到了今年的日期</span><br>                                &#123;<br>                                        <span class="hljs-keyword">goto</span> FINISH; <span class="hljs-comment">// 跳出多层循环才被迫用goto语句</span><br>                                &#125;<br>                                day1++;<br>                                count++;<br>                        &#125;<br>                        day1 = <span class="hljs-number">0</span>;<br>                        month1++;<br>                &#125;<br>                month1 = <span class="hljs-number">0</span>;<br>                year1++;<br>        &#125;<br><br>FINISH: <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你在这个世界上总共生存了%d天\n&quot;</span>, count);<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<pre><code>       2.0版本：可计算如果活到80岁还有几天生命和生命已用百分比。
+</code></pre>
+<p>在判断的末枝进行两个判断：1、是否到今年；</p>
+<pre><code>                                      2、是否到80岁那年
+</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>        <span class="hljs-keyword">long</span> count1 = <span class="hljs-number">0</span>, count2; <span class="hljs-comment">// count用于存放一共活了多少天</span><br>        <span class="hljs-keyword">int</span> year1, year2, year3; <span class="hljs-comment">// year1是你的生日年份，year2是今天的年份</span><br>        <span class="hljs-keyword">int</span> month1, month2, month3;<br>        <span class="hljs-keyword">int</span> day1, day2, day3;<br>        <span class="hljs-keyword">int</span> days[] = &#123;<span class="hljs-number">31</span>, <span class="hljs-number">28</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>&#125;;<br><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入你的生日（如1988-05-20）：&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>, &amp;year1, &amp;month1, &amp;day1);<br><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入今天的日期（如2016-03-28）：&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>, &amp;year2, &amp;month2, &amp;day2);<br><br>        year3 = year1 + <span class="hljs-number">80</span>;<br>        month3 = month1;<br>        day3 = day1;<br><br>        <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>        &#123;<br>                days[<span class="hljs-number">1</span>] = (year1 % <span class="hljs-number">400</span> == <span class="hljs-number">0</span> || (year1 % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year1 % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>)) ? <span class="hljs-number">29</span> : <span class="hljs-number">28</span>;<br>                <span class="hljs-keyword">while</span> (month1 &lt;= <span class="hljs-number">12</span>)<br>                &#123;<br>                        <span class="hljs-keyword">while</span> (day1 &lt;= days[month1 - <span class="hljs-number">1</span>])<br>                        &#123;<br>                                <span class="hljs-keyword">if</span> (year1 == year2 &amp;&amp; month1 == month2 &amp;&amp; day1 == day2)<br>                                &#123;<br>                                        count2 = count1;<br>                                        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你在这个世界上总共生存了%d天\n&quot;</span>, count2);<br>                                &#125;<br><br>                                <span class="hljs-keyword">if</span> (year1 == year3 &amp;&amp; month1 == month3 &amp;&amp; day1 == day3)<br>                                &#123;<br>                                        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;如果能活到80岁，你还剩下%d天\n&quot;</span>, count1 - count2);<br>                                        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你已经使用了%.2f\%的生命，请好好珍惜剩下的时间！\n&quot;</span>, (<span class="hljs-keyword">double</span>)count2 / count1 * <span class="hljs-number">100</span>);<br>                                        <span class="hljs-keyword">goto</span> FINISH;<br>                                &#125;<br><br>                                day1++;<br>                                count1++;<br>                        &#125;<br>                        day1 = <span class="hljs-number">0</span>;<br>                        month1++;<br>                &#125;<br>                month1 = <span class="hljs-number">0</span>;<br>                year1++;<br>        &#125;<br><br>FINISH: <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>附：自己写的1.0版本的垃圾代码</p>
+<p>感想：想法没多大问题，分步计算，有点复杂。在每一步进行计算的时候要想好这步干的是什么。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span> </span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">int</span> a,b,c,x,y,z,m,n,num=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">int</span> j[<span class="hljs-number">12</span>]=&#123;<span class="hljs-number">31</span>,<span class="hljs-number">28</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>&#125;;<br>	<span class="hljs-keyword">int</span> i[<span class="hljs-number">12</span>]=&#123;<span class="hljs-number">31</span>,<span class="hljs-number">29</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>&#125;;<br>	<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入你的生日（如1988-05-20）：&quot;</span>);<br>	<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>,&amp;a,&amp;b,&amp;c);<br>	 <br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入现在日期（如2016-03-28）：&quot;</span>);<br>	<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>,&amp;x,&amp;y,&amp;z);<br>	<br>	<span class="hljs-keyword">if</span> (a%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;a%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>||a%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>)<br>	<br>	&#123;<br>		<br>		<span class="hljs-keyword">for</span> (m=i[b<span class="hljs-number">-1</span>]-c;b&lt;<span class="hljs-number">12</span>;b++)<br>		&#123;<br>			m=i[b]+m;<br>		&#125;<br>		<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">for</span>(m=c;b&lt;<span class="hljs-number">12</span>;b++)<br>		&#123;<br>			m=j[b]+m;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">for</span> (a=a+<span class="hljs-number">1</span>;a&lt;x;a++)<br>	&#123;<br>		<span class="hljs-keyword">if</span> ((a%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;a%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||(a%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>))<br>		&#123;<br>			m=m+<span class="hljs-number">366</span>;<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			m=m+<span class="hljs-number">365</span>;<br>		&#125;<br>	&#125;<br>	a=x;<br>	b=y;<br>	c=z;<br>	<span class="hljs-keyword">if</span> ((a%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;a%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||(a%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>))<br>	&#123;<br>		<span class="hljs-keyword">for</span> (n=c;b&gt;=<span class="hljs-number">2</span>;b--)<br>		&#123;<br>			n=i[b<span class="hljs-number">-2</span>]+n;<br>		&#125;<br>		<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">for</span>(n=c;b&gt;=<span class="hljs-number">2</span>;b--)<br>		&#123;<br>			n=j[b<span class="hljs-number">-2</span>]+n;<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你在这个世界上已经生存了%d天&quot;</span>,m+n);<br>	<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;	 <br>&#125;<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C%E8%AF%AD%E8%A8%80%EF%BC%8Cwhile/">C语言，while</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/05/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
