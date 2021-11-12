@@ -21,12 +21,12 @@
   <meta name="description" content="while-计算一个人活了几天主思路：对每一年都进行判断（即需要用到循环，这里用while比较合适），然后一天一天地相加。 *变量的取名要清晰 *每个月加完后，初始日为0；每年加完后，初始月为0. *c语言中 d&#x3D;n? 29:28;      一个判断： d&#x3D;n吗？  等于，d&#x3D;29 不等于，d&#x3D;28  这是一个条件表达式，满足条件，执行：前的，不满足，执行后边的。 123456789101112">
 <meta property="og:type" content="article">
 <meta property="og:title" content="while计算一个人活了几天">
-<meta property="og:url" content="http://example.com/2021/11/07/My-New-Post/index.html">
+<meta property="og:url" content="http://example.com/2021/11/07/while%E8%AE%A1%E7%AE%97%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%B4%BB%E4%BA%86%E5%A4%9A%E4%B9%85/index.html">
 <meta property="og:site_name" content="MHF&#39;s notes">
 <meta property="og:description" content="while-计算一个人活了几天主思路：对每一年都进行判断（即需要用到循环，这里用while比较合适），然后一天一天地相加。 *变量的取名要清晰 *每个月加完后，初始日为0；每年加完后，初始月为0. *c语言中 d&#x3D;n? 29:28;      一个判断： d&#x3D;n吗？  等于，d&#x3D;29 不等于，d&#x3D;28  这是一个条件表达式，满足条件，执行：前的，不满足，执行后边的。 123456789101112">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-07T12:37:48.000Z">
-<meta property="article:modified_time" content="2021-11-09T14:16:24.130Z">
+<meta property="article:modified_time" content="2021-11-09T14:46:26.393Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C语言，while语句">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.3k 字
+      3.7k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      12 分钟
     </span>
   
 
@@ -260,6 +260,8 @@
 <p>附：自己写的1.0版本的垃圾代码</p>
 <p>感想：想法没多大问题，分步计算，有点复杂。在每一步进行计算的时候要想好这步干的是什么。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span> </span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">int</span> a,b,c,x,y,z,m,n,num=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">int</span> j[<span class="hljs-number">12</span>]=&#123;<span class="hljs-number">31</span>,<span class="hljs-number">28</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>&#125;;<br>	<span class="hljs-keyword">int</span> i[<span class="hljs-number">12</span>]=&#123;<span class="hljs-number">31</span>,<span class="hljs-number">29</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>&#125;;<br>	<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入你的生日（如1988-05-20）：&quot;</span>);<br>	<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>,&amp;a,&amp;b,&amp;c);<br>	 <br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入现在日期（如2016-03-28）：&quot;</span>);<br>	<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d-%d-%d&quot;</span>,&amp;x,&amp;y,&amp;z);<br>	<br>	<span class="hljs-keyword">if</span> (a%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;a%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>||a%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>)<br>	<br>	&#123;<br>		<br>		<span class="hljs-keyword">for</span> (m=i[b<span class="hljs-number">-1</span>]-c;b&lt;<span class="hljs-number">12</span>;b++)<br>		&#123;<br>			m=i[b]+m;<br>		&#125;<br>		<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">for</span>(m=c;b&lt;<span class="hljs-number">12</span>;b++)<br>		&#123;<br>			m=j[b]+m;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">for</span> (a=a+<span class="hljs-number">1</span>;a&lt;x;a++)<br>	&#123;<br>		<span class="hljs-keyword">if</span> ((a%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;a%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||(a%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>))<br>		&#123;<br>			m=m+<span class="hljs-number">366</span>;<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			m=m+<span class="hljs-number">365</span>;<br>		&#125;<br>	&#125;<br>	a=x;<br>	b=y;<br>	c=z;<br>	<span class="hljs-keyword">if</span> ((a%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;a%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||(a%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>))<br>	&#123;<br>		<span class="hljs-keyword">for</span> (n=c;b&gt;=<span class="hljs-number">2</span>;b--)<br>		&#123;<br>			n=i[b<span class="hljs-number">-2</span>]+n;<br>		&#125;<br>		<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">for</span>(n=c;b&gt;=<span class="hljs-number">2</span>;b--)<br>		&#123;<br>			n=j[b<span class="hljs-number">-2</span>]+n;<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你在这个世界上已经生存了%d天&quot;</span>,m+n);<br>	<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;	 <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>post:<br>  meta:<br>    author:  # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值<br>      enable: false<br>    date:  # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期<br>      enable: true<br>      format: “dddd, MMMM Do YYYY, h:mm a”  # 格式参照 ISO-8601 日期格式化<br>    wordcount:  # 字数统计<br>      enable: true<br>      format: “{} 字”  # 显示的文本，{}是数字的占位符（必须包含)，下同<br>    min2read:  # 阅读时间<br>      enable: true<br>      format: “{} 分钟”<br>    views:  # 阅读次数<br>      enable: false<br>      source: “leancloud”  # 统计数据来源，可选：leancloud | busuanzi   注意不蒜子会间歇抽风<br>      format: “{} 次”</p>
+
             </div>
             <hr>
             <div>
@@ -285,6 +287,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/11/11/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB%E5%92%8C%E6%95%B4%E7%90%86%E6%96%87%E7%8C%AE%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E9%AA%8C%E3%80%82/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
