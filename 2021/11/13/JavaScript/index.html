@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="JavaScript学习笔记1. 语法专题1.1 数据类型的转换1. 概述JavaScript 是一种动态类型语言，变量没有类型限制，可以随时赋予任意值。 1let x &#x3D; y ? 1 : &amp;#x27;a&amp;#x27;;  2. 强制转换2.1 Number()将任意类型的值转化成数值 （1）原始类型值 12345678Number(324) &#x2F;&#x2F; 324Number(&amp;#x27;324&amp;#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript学习笔记">
+<meta property="og:url" content="http://example.com/2021/11/13/JavaScript/index.html">
+<meta property="og:site_name" content="MHF&#39;s notes">
+<meta property="og:description" content="JavaScript学习笔记1. 语法专题1.1 数据类型的转换1. 概述JavaScript 是一种动态类型语言，变量没有类型限制，可以随时赋予任意值。 1let x &#x3D; y ? 1 : &amp;#x27;a&amp;#x27;;  2. 强制转换2.1 Number()将任意类型的值转化成数值 （1）原始类型值 12345678Number(324) &#x2F;&#x2F; 324Number(&amp;#x27;324&amp;#x27;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T03:02:04.000Z">
+<meta property="article:modified_time" content="2021-11-13T08:15:29.966Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="入门">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>JavaScript学习笔记 - MHF&#39;s notes</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":"tur","baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MHF&#39;s notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript学习笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-13 11:02" pubdate>
+        2021年11月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript学习笔记</h1>
+            
+            <div class="markdown-body">
+              <h1 id="JavaScript学习笔记"><a href="#JavaScript学习笔记" class="headerlink" title="JavaScript学习笔记"></a>JavaScript学习笔记</h1><h2 id="1-语法专题"><a href="#1-语法专题" class="headerlink" title="1. 语法专题"></a>1. 语法专题</h2><h3 id="1-1-数据类型的转换"><a href="#1-1-数据类型的转换" class="headerlink" title="1.1 数据类型的转换"></a>1.1 数据类型的转换</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>JavaScript 是一种动态类型语言，变量没有类型限制，可以随时赋予任意值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = y ? <span class="hljs-number">1</span> : <span class="hljs-string">&#x27;a&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-强制转换"><a href="#2-强制转换" class="headerlink" title="2. 强制转换"></a>2. 强制转换</h4><h5 id="2-1-Number"><a href="#2-1-Number" class="headerlink" title="2.1 Number()"></a>2.1 Number()</h5><p>将任意类型的值转化成数值</p>
+<p><strong>（1）原始类型值</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Number</span>(<span class="hljs-number">324</span>) <span class="hljs-comment">// 324</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-string">&#x27;324&#x27;</span>) <span class="hljs-comment">// 324</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-string">&#x27;324abc&#x27;</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment">// 空字符串转为0</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 1</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>) <span class="hljs-comment">// 0</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>) <span class="hljs-comment">// 0</span><br></code></pre></td></tr></table></figure>
+
+<p><code>Number</code>函数将字符串转为数值，要比<code>parseInt</code>函数严格很多.基本上，只要有一个字符无法转成数值，整个字符串就会被转为<code>NaN</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;42 cats&#x27;</span>) <span class="hljs-comment">// 42</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-string">&#x27;42 cats&#x27;</span>) <span class="hljs-comment">// NaN</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>parseInt</code>逐个解析字符，而<code>Number</code>函数整体转换字符串的类型。</p>
+<p>另外，<code>parseInt</code>和<code>Number</code>函数都会自动过滤一个字符串前导和后缀的空格。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;\t\v\r12.34\n&#x27;</span>) <span class="hljs-comment">// 12</span><br><span class="hljs-built_in">Number</span>(<span class="hljs-string">&#x27;\t\v\r12.34\n&#x27;</span>) <span class="hljs-comment">// 12.34</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>（2）对象</strong></p>
+<p><code>Number</code>方法的参数是对象时，将返回<code>NaN</code>，除非是包含单个数值的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Number</span>(&#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>&#125;) <span class="hljs-comment">// NaN</span><br><span class="hljs-built_in">Number</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) <span class="hljs-comment">// NaN</span><br><span class="hljs-built_in">Number</span>([<span class="hljs-number">5</span>]) <span class="hljs-comment">// 5</span><br></code></pre></td></tr></table></figure>
+
+<p><code>Number</code>背后的转换规则:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj = &#123;<span class="hljs-attr">x</span>: <span class="hljs-number">1</span>&#125;;<br><span class="hljs-built_in">Number</span>(obj) <span class="hljs-comment">// NaN</span><br><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> obj.valueOf() === <span class="hljs-string">&#x27;object&#x27;</span>) &#123;<br>  <span class="hljs-built_in">Number</span>(obj.toString());<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-built_in">Number</span>(obj.valueOf());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-2-String"><a href="#2-2-String" class="headerlink" title="2.2 String()"></a>2.2 String()</h5><p><code>String</code>函数可以将<strong>任意类型的值</strong>转化成<strong>字符串</strong>，转换规则如下：</p>
+<p><strong>（1）原始类型值</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>(<span class="hljs-number">123</span>) <span class="hljs-comment">// &quot;123&quot;</span><br><span class="hljs-built_in">String</span>(<span class="hljs-string">&#x27;abc&#x27;</span>) <span class="hljs-comment">// &quot;abc&quot;</span><br><span class="hljs-built_in">String</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// &quot;true&quot;</span><br><span class="hljs-built_in">String</span>(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">// &quot;undefined&quot;</span><br><span class="hljs-built_in">String</span>(<span class="hljs-literal">null</span>) <span class="hljs-comment">// &quot;null&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>（2）对象</strong></p>
+<p><code>String</code>方法的参数如果是对象，返回一个类型字符串；如果是数组，返回该数组的字符串形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>(&#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>&#125;) <span class="hljs-comment">// &quot;[object Object]&quot;</span><br><span class="hljs-built_in">String</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) <span class="hljs-comment">// &quot;1,2,3&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>转换规则</strong></p>
+<ol>
+<li>先调用<strong>对象自身的<code>toString</code><strong>方法。如果返回</strong>原始类型的值</strong>，则对该值使用<code>String</code>函数，不再进行以下步骤。</li>
+<li>如果<code>toString</code>方法返回的是<strong>对象</strong>，再调用原对象的**<code>valueOf</code>方法**。如果<code>valueOf</code>方法返回原始类型的值，则对该值使用<code>String</code>函数，不再进行以下步骤。</li>
+<li>如果<code>valueOf</code>方法返回的是对象，就报错。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>(&#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>&#125;)<br><span class="hljs-comment">// &quot;[object Object]&quot;</span><br><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-built_in">String</span>(&#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>&#125;.toString())<br><span class="hljs-comment">// &quot;[object Object]&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="2-3-Boolean"><a href="#2-3-Boolean" class="headerlink" title="2.3 Boolean()"></a>2.3 Boolean()</h5><p><code>Boolean()</code>函数可以将<strong>任意类型的值</strong>转为布尔值。</p>
+<p>它的转换规则相对简单：除了以下五个值的转换结果为<code>false</code>，其他的值全部为<code>true</code>。</p>
+<ul>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li><code>0</code>（包含<code>-0</code>和<code>+0</code>）</li>
+<li><code>NaN</code></li>
+<li><code>&#39;&#39;</code>（空字符串）</li>
+</ul>
+<p>当然，<code>true</code>和<code>false</code>这两个布尔值不会发生变化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>) <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+
+<p>所有对象（包括空对象）的转换结果都是<code>true</code>，甚至连**<code>false</code>对应的布尔对象**<code>new Boolean(false)</code>也<strong>是<code>true</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Boolean</span>(&#123;&#125;) <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Boolean</span>([]) <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Boolean</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>)) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-自动转换（强制转换为基础）"><a href="#3-自动转换（强制转换为基础）" class="headerlink" title="3. 自动转换（强制转换为基础）"></a>3. 自动转换（强制转换为基础）</h4><p>自动转换的规则：预期什么类型的值，就调用该类型的转换函数。比如，某个位置预期为字符串，就调用<code>String()</code>函数进行转换。如果该位置既可以是字符串，也可能是数值，那么默认转为数值。</p>
+<p>由于自动转换具有不确定性，而且不易除错，建议在预期为布尔值、数值、字符串的地方，全部使用<code>Boolean()</code>、<code>Number()</code>和<code>String()</code>函数进行显式转换。</p>
+<p><strong>3.1 自动转换为布尔值</strong></p>
+<p>JavaScript 遇到预期为布尔值的地方（比如**<code>if</code>语句<strong>的条件部分），就会将非布尔值的参数自动转换为布尔值。系统内部会自动调用</strong><code>Boolean()</code>函数**。</p>
+<p><strong>3.2 自动转换为字符串</strong></p>
+<p>JavaScript 遇到预期为字符串的地方，就会将非字符串的值自动转为字符串。具体规则是，先将复合类型的值<strong>转为原始类型的值</strong>，再将原始类型的值转为字符串。</p>
+<p><strong>3.3 自动转换为数值</strong></p>
+<p>JavaScript 遇到预期为数值的地方，就会将参数值自动转换为数值。系统内部会自动调用<code>Number()</code>函数。</p>
+<blockquote>
+<p>除了加法运算符（<code>+</code>）有可能把运算子转为字符串，<strong>其他运算符都会把运算子自动转成数值</strong>。</p>
+</blockquote>
+<blockquote>
+<p>注意：**<code>null</code>转为数值时为<code>0</code>，而<code>undefined</code>转为数值时为<code>NaN</code>。**</p>
+</blockquote>
+<h3 id="1-2-错误处理机制"><a href="#1-2-错误处理机制" class="headerlink" title="1.2 错误处理机制"></a>1.2 错误处理机制</h3><h4 id="1-Error实例对象"><a href="#1-Error实例对象" class="headerlink" title="1. Error实例对象"></a>1. Error实例对象</h4><p>JavaScript 解析或运行时，一旦发生错误，引擎就会抛出一个<strong>错误对象</strong>。JavaScript 原生<strong>提供<code>Error</code>构造函数</strong>，所有抛出的错误都是这个构造函数的<strong>实例</strong>。</p>
+<p>Error的属性</p>
+<ul>
+<li><strong>message</strong>：错误提示信息</li>
+<li><strong>name</strong>：错误名称（非标准属性）</li>
+<li><strong>stack</strong>：错误的堆栈（非标准属性）</li>
+</ul>
+<h4 id="2-原生错误类型"><a href="#2-原生错误类型" class="headerlink" title="2. 原生错误类型"></a>2. 原生错误类型</h4><p><code>Error</code>实例对象是最一般的错误类型，在它的基础上，JavaScript 还定义了其他6种错误对象。也就是说，存在**<code>Error</code>的6个派生对象****。</p>
+<p><strong>2.1 SyntaxError 对象</strong></p>
+<p><code>SyntaxError</code>对象是解析代码时发生的<strong>语法错误</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// 变量名错误</span><br><span class="hljs-keyword">var</span> 1a;<br><span class="hljs-comment">// Uncaught SyntaxError: Invalid or unexpected token</span><br><br><span class="hljs-comment">// 缺少括号</span><br><span class="hljs-built_in">console</span>.log <span class="hljs-string">&#x27;hello&#x27;</span>);<br><span class="hljs-comment">// Uncaught SyntaxError: Unexpected string</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>2.2 ReferenceError 对象</strong></p>
+<p><code>ReferenceError</code>对象是<strong>引用一个不存在的变量</strong>时发生的错误</p>
+<p>另一种触发场景是，将一个<strong>值分配给无法分配的对象</strong>，比如对函数的运行结果赋值。</p>
+<p><strong>2.3 RangeError 对象</strong></p>
+<p><code>RangeError</code>对象是一个值<strong>超出有效范围</strong>时发生的错误。主要有几种情况，一是数组长度为负数，二是<code>Number</code>对象的方法参数超出范围，以及函数堆栈超过最大值。</p>
+<p><strong>2.4 TypeError 对象</strong></p>
+<p><code>TypeError</code>对象是变量或参数<strong>不是预期类型</strong>时发生的错误。比如，对字符串、布尔值、数值等原始类型的值使用<code>new</code>命令，就会抛出这种错误，因为<code>new</code>命令的参数应该是一个构造函数。</p>
+<p><strong>2.5 URLError 对象</strong></p>
+<p><code>URIError</code>对象是 URI 相关函数的<strong>参数不正确</strong>时抛出的错误，主要涉及<code>encodeURI()</code>、<code>decodeURI()</code>、<code>encodeURIComponent()</code>、<code>decodeURIComponent()</code>、<code>escape()</code>和<code>unescape()</code>这六个函数。</p>
+<p>2.6 EvalError 对象</p>
+<p><code>eval</code>函数没有被正确执行时，会抛出<code>EvalError</code>错误。该错误类型已经不再使用了，只是为了保证与以前代码兼容，才继续保留。</p>
+<h5 id="2-7-总结"><a href="#2-7-总结" class="headerlink" title="2.7 总结"></a>2.7 总结</h5><p>以上这6种派生错误，连同原始的<code>Error</code>对象，都是<strong>构造函数</strong>。开发者可以使用它们，手动生成错误对象的实例。这些构造函数都接受一个参数，代表错误提示信息（message）。</p>
+<h4 id="3-自定义错误"><a href="#3-自定义错误" class="headerlink" title="3. 自定义错误"></a>3. 自定义错误</h4><p>除了 JavaScript 原生提供的七种错误对象，还可以定义自己的错误对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">UserError</span>(<span class="hljs-params">message</span>) </span>&#123;<br>  <span class="hljs-built_in">this</span>.message = message || <span class="hljs-string">&#x27;默认信息&#x27;</span>;<br>  <span class="hljs-built_in">this</span>.name = <span class="hljs-string">&#x27;UserError&#x27;</span>;<br>&#125;<br><br>UserError.prototype = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>();<br>UserError.prototype.constructor = UserError;<br></code></pre></td></tr></table></figure>
+
+<p>上面代码自定义一个错误对象<code>UserError</code>，让它继承<code>Error</code>对象。然后，就可以生成这种自定义类型的错误了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> UserError(<span class="hljs-string">&#x27;这是自定义的错误！&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-throw-语句"><a href="#4-throw-语句" class="headerlink" title="4. throw 语句"></a>4. throw 语句</h4><p><code>throw</code>语句的作用是手动中断程序执行，抛出一个错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> x = -<span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">0</span>) &#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;x 必须为正数&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// Uncaught Error: x 必须为正数</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="5-try…catch-结构"><a href="#5-try…catch-结构" class="headerlink" title="5. try…catch 结构"></a>5. try…catch 结构</h4><p>一旦发生错误，程序就中止执行了。JavaScript 提供了<code>try...catch</code>结构，允许对错误进行处理，选择是否往下执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;出错了!&#x27;</span>);<br>&#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>  <span class="hljs-built_in">console</span>.log(e.name + <span class="hljs-string">&quot;: &quot;</span> + e.message);<br>  <span class="hljs-built_in">console</span>.log(e.stack);<br>&#125;<br><span class="hljs-comment">// Error: 出错了!</span><br><span class="hljs-comment">//   at &lt;anonymous&gt;:2:9</span><br><span class="hljs-comment">//   ...</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>try</code>代码块抛出错误（上例用的是<code>throw</code>语句），JavaScript 引擎就立即把代码的执行，<strong>转到<code>catch</code>代码块</strong>，或者说<strong>错误（Error）被<code>catch</code>代码块捕获了</strong>。<code>catch</code>接受一个参数，表示<code>try</code>代码块抛出的值。</p>
+<blockquote>
+<p>如果你不确定某些代码是否会报错，就可以把它们放在<code>try...catch</code>代码块之中，便于进一步对错误进行处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">try</span> &#123;<br>  f();<br>&#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>  <span class="hljs-comment">// 处理错误</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<p><strong><code>catch</code>代码块捕获错误之后，程序不会中断，会按照正常流程继续执行下去。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;出错了&quot;</span>;<br>&#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">111</span>);<br>&#125;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">222</span>);<br><span class="hljs-comment">// 111</span><br><span class="hljs-comment">// 222</span><br></code></pre></td></tr></table></figure>
+
+<p>为了捕捉不同类型的错误，<code>catch</code>代码块之中可以加入判断语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">try</span> &#123;<br>  foo.bar();<br>&#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>  <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">EvalError</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(e.name + <span class="hljs-string">&quot;: &quot;</span> + e.message);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">RangeError</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(e.name + <span class="hljs-string">&quot;: &quot;</span> + e.message);<br>  &#125;<br>  <span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="6-finally-代码块"><a href="#6-finally-代码块" class="headerlink" title="6. finally 代码块"></a>6. finally 代码块</h4><p><code>try...catch</code>结构允许在最后添加一个<code>finally</code>代码块，表示不管是否出现错误，都必需在最后运行的语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cleansUp</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;出错了……&#x27;</span>);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;此行不会执行&#x27;</span>);<br>  &#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;完成清理工作&#x27;</span>);<br>  &#125;<br>&#125;<br><br>cleansUp()<br><span class="hljs-comment">// 完成清理工作</span><br><span class="hljs-comment">// Uncaught Error: 出错了……</span><br><span class="hljs-comment">//    at cleansUp (&lt;anonymous&gt;:3:11)</span><br><span class="hljs-comment">//    at &lt;anonymous&gt;:10:1</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，由于没有<code>catch</code>语句块，<strong>一旦发生错误，代码就会中断执行。中断执行之前，会先执行<code>finally</code>代码块，然后再向用户提示报错信息。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">idle</span>(<span class="hljs-params">x</span>) </span>&#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(x);<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;result&#x27;</span>;<br>  &#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;FINALLY&#x27;</span>);<br>  &#125;<br>&#125;<br><br>idle(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">// hello</span><br><span class="hljs-comment">// FINALLY</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>try</code>代码块<strong>没有发生错误</strong>，而且里面还<strong>包括<code>return</code>语句，但是<code>finally</code>代码块依然会执行</strong>。而且，这个函数的返回值还是<code>result</code>。<u><strong><code>return</code>语句的执行是排在<code>finally</code>代码之前</strong></u>，只是<strong>等<code>finally</code>代码执行完毕后才返回</strong>。</p>
+<p>下面是<code>finally</code>代码块用法的典型场景。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">openFile();<br><br><span class="hljs-keyword">try</span> &#123;<br>  writeFile(Data);<br>&#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>  handleError(e);<br>&#125; <span class="hljs-keyword">finally</span> &#123;<br>  closeFile();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面代码首先打开一个文件，然后在<code>try</code>代码块中写入文件，如果没有发生错误，则运行<code>finally</code>代码块关闭文件；一旦发生错误，则先使用<code>catch</code>代码块处理错误，再使用<code>finally</code>代码块关闭文件。</p>
+<p><strong>下面的例子充分反映了<code>try...catch...finally</code>这三者之间的执行顺序。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">throw</span> <span class="hljs-string">&#x27;bug&#x27;</span>;<br>  &#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// 这句原本会延迟到 finally 代码块结束再执行</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>); <span class="hljs-comment">// 不会运行</span><br>  &#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 这句会覆盖掉前面那句 return</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>); <span class="hljs-comment">// 不会运行</span><br>  &#125;<br><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>); <span class="hljs-comment">// 不会运行</span><br>&#125;<br><br><span class="hljs-keyword">var</span> result = f();<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 3</span><br><br>result<br><span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>catch</code>代码块<strong>结束执行（return）之前</strong>，会先执行<code>finally</code>代码块。</p>
+<p><code>catch</code>代码块之中，触发<strong>转入<code>finally</code><strong>代码块的标志，</strong>不仅有<code>return</code>语句，还有<code>throw</code>语句。</strong></p>
+<p><strong><code>try</code>代码块内部，还可以再使用<code>try</code>代码块。</strong></p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scilab"><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    consle.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Hello world!&#x27;</span>); <span class="hljs-comment">// 报错（console拼错了）</span><br>  &#125;<br>  finally &#123;<br>    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Finally&#x27;</span>);<br>  &#125;<br>  console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Will I run?&#x27;</span>);<br>&#125; <span class="hljs-keyword">catch</span>(<span class="hljs-built_in">error</span>) &#123;<br>  console.<span class="hljs-built_in">error</span>(error.message);<br>&#125;<br><span class="hljs-comment">// Finally</span><br><span class="hljs-comment">// consle is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>try</code>里面还有一个<code>try</code>。内层的<code>try</code>报错（<code>console</code>拼错了），这时会执行内层的<code>finally</code>代码块，然后抛出错误，被外层的<code>catch</code>捕获。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/12/Markdown%E5%86%99%E6%B3%95/">
+                        <span class="hidden-mobile">Markdown写法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
