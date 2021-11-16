@@ -26,7 +26,7 @@
 <meta property="og:description" content="JavaScript学习笔记1. 语法专题1.1 数据类型的转换1. 概述JavaScript 是一种动态类型语言，变量没有类型限制，可以随时赋予任意值。 1let x &#x3D; y ? 1 : &amp;#x27;a&amp;#x27;;  2. 强制转换2.1 Number()将任意类型的值转化成数值 （1）原始类型值 12345678Number(324) &#x2F;&#x2F; 324Number(&amp;#x27;324&amp;#x27;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T03:02:04.000Z">
-<meta property="article:modified_time" content="2021-11-14T03:50:43.475Z">
+<meta property="article:modified_time" content="2021-11-16T13:06:25.151Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="入门">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.1k 字
+      16k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25 分钟
+      51 分钟
     </span>
   
 
@@ -316,7 +316,7 @@
 <h4 id="2-原生错误类型"><a href="#2-原生错误类型" class="headerlink" title="2. 原生错误类型"></a>2. 原生错误类型</h4><p><code>Error</code>实例对象是最一般的错误类型，在它的基础上，JavaScript 还定义了其他6种错误对象。也就是说，存在**<code>Error</code>的6个派生对象****。</p>
 <p><strong>2.1 SyntaxError 对象</strong></p>
 <p><code>SyntaxError</code>对象是解析代码时发生的<strong>语法错误</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// 变量名错误</span><br><span class="hljs-keyword">var</span> 1a;<br><span class="hljs-comment">// Uncaught SyntaxError: Invalid or unexpected token</span><br><br><span class="hljs-comment">// 缺少括号</span><br><span class="hljs-built_in">console</span>.log <span class="hljs-string">&#x27;hello&#x27;</span>);<br><span class="hljs-comment">// Uncaught SyntaxError: Unexpected string</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// 变量名错误</span><br><span class="hljs-keyword">let</span> 1a;<br><span class="hljs-comment">// Uncaught SyntaxError: Invalid or unexpected token</span><br><br><span class="hljs-comment">// 缺少括号</span><br><span class="hljs-built_in">console</span>.log <span class="hljs-string">&#x27;hello&#x27;</span>);<br><span class="hljs-comment">// Uncaught SyntaxError: Unexpected string</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>2.2 ReferenceError 对象</strong></p>
 <p><code>ReferenceError</code>对象是<strong>引用一个不存在的变量</strong>时发生的错误</p>
@@ -337,7 +337,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> UserError(<span class="hljs-string">&#x27;这是自定义的错误！&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
 <h4 id="4-throw-语句"><a href="#4-throw-语句" class="headerlink" title="4. throw 语句"></a>4. throw 语句</h4><p><code>throw</code>语句的作用是手动中断程序执行，抛出一个错误。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> x = -<span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">0</span>) &#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;x 必须为正数&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// Uncaught Error: x 必须为正数</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = -<span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">0</span>) &#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;x 必须为正数&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// Uncaught Error: x 必须为正数</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="5-try…catch-结构"><a href="#5-try…catch-结构" class="headerlink" title="5. try…catch 结构"></a>5. try…catch 结构</h4><p>一旦发生错误，程序就中止执行了。JavaScript 提供了<code>try...catch</code>结构，允许对错误进行处理，选择是否往下执行。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;出错了!&#x27;</span>);<br>&#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>  <span class="hljs-built_in">console</span>.log(e.name + <span class="hljs-string">&quot;: &quot;</span> + e.message);<br>  <span class="hljs-built_in">console</span>.log(e.stack);<br>&#125;<br><span class="hljs-comment">// Error: 出错了!</span><br><span class="hljs-comment">//   at &lt;anonymous&gt;:2:9</span><br><span class="hljs-comment">//   ...</span><br></code></pre></td></tr></table></figure>
@@ -365,7 +365,7 @@
 
 <p>上面代码首先打开一个文件，然后在<code>try</code>代码块中写入文件，如果没有发生错误，则运行<code>finally</code>代码块关闭文件；一旦发生错误，则先使用<code>catch</code>代码块处理错误，再使用<code>finally</code>代码块关闭文件。</p>
 <p><strong>下面的例子充分反映了<code>try...catch...finally</code>这三者之间的执行顺序。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">throw</span> <span class="hljs-string">&#x27;bug&#x27;</span>;<br>  &#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// 这句原本会延迟到 finally 代码块结束再执行</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>); <span class="hljs-comment">// 不会运行</span><br>  &#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 这句会覆盖掉前面那句 return</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>); <span class="hljs-comment">// 不会运行</span><br>  &#125;<br><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>); <span class="hljs-comment">// 不会运行</span><br>&#125;<br><br><span class="hljs-keyword">var</span> result = f();<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 3</span><br><br>result<br><span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">throw</span> <span class="hljs-string">&#x27;bug&#x27;</span>;<br>  &#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// 这句原本会延迟到 finally 代码块结束再执行</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>); <span class="hljs-comment">// 不会运行</span><br>  &#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 这句会覆盖掉前面那句 return</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>); <span class="hljs-comment">// 不会运行</span><br>  &#125;<br><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>); <span class="hljs-comment">// 不会运行</span><br>&#125;<br><br><span class="hljs-keyword">let</span> result = f();<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 3</span><br><br>result<br><span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
 
 <p>上面代码中，<code>catch</code>代码块<strong>结束执行（return）之前</strong>，会先执行<code>finally</code>代码块。</p>
 <p><code>catch</code>代码块之中，触发<strong>转入<code>finally</code><strong>代码块的标志，</strong>不仅有<code>return</code>语句，还有<code>throw</code>语句。</strong></p>
@@ -411,25 +411,269 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;<br>&#125; <span class="hljs-comment">// 没有分号</span><br></code></pre></td></tr></table></figure>
 
 <p>注意，<strong>函数表达式仍然要使用分号</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">let</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <p>以上三种情况，如果使用了分号，并不会出错。因为，<strong>解释引擎</strong>会<strong>把这个分号解释为空语句。</strong></p>
 <h4 id="5-2-分号的自动添加"><a href="#5-2-分号的自动添加" class="headerlink" title="5.2 分号的自动添加"></a>5.2 <strong>分号的自动添加</strong></h4><p>除了上一节的三种情况，所有语句都应该使用分号。但是，如果没有使用分号，<strong>大多数情况下</strong>，JavaScript 会<strong>自动添加</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 
 <p>这种语法特性被称为“<strong>分号的自动添加</strong>”（Automatic Semicolon Insertion，简称 <strong>ASI</strong>）。</p>
 <p>由于解释引擎自动添加分号的行为<strong>难以预测</strong>，因此编写代码的时候不应该省略行尾的分号。</p>
 <p>另外，不写结尾的分号，可能会导致脚本合并出错。所以，有的代码库在第一行语句开始前，会加上一个分号。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">;<span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">;<span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
 
 <p>上面这种写法就可以<strong>避免与其他脚本合并时，排在前面的脚本最后一行语句没有分号</strong>，导致运行出错的问题。</p>
 <h3 id="6-全局变量"><a href="#6-全局变量" class="headerlink" title="6. 全局变量"></a>6. 全局变量</h3><p>JavaScript 最大的语法缺点，可能就是<strong>全局变量对于任何一个代码块，都是可读可写。</strong>这对代码的模块化和重复使用，非常不利。</p>
 <p>因此，建议避免使用全局变量。如果不得不使用，可以考虑用<strong>大写字母表示变量名</strong>，这样更容易看出这是全局变量，**比如<code>UPPER_CASE</code>**。</p>
 <h3 id="7-变量声明"><a href="#7-变量声明" class="headerlink" title="7. 变量声明"></a>7. 变量声明</h3><p>JavaScript 会自动将变量声明“提升”（hoist）到代码块（block）的头部。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span> (!x) &#123;<br>  <span class="hljs-keyword">var</span> x = &#123;&#125;;<br>&#125;<br><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">var</span> x;<br><span class="hljs-keyword">if</span> (!x) &#123;<br>  x = &#123;&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span> (!x) &#123;<br>  <span class="hljs-keyword">var</span> x = &#123;&#125;;<br>&#125;<br><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">let</span> x;<br><span class="hljs-keyword">if</span> (!x) &#123;<br>  x = &#123;&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>另外，<strong>所有函数都应该在使用之前定义。函数内部的变量声明，都应该放在函数的头部。</strong></p>
-<h3 id="8-with-语句"><a href="#8-with-语句" class="headerlink" title="8. with 语句"></a>8. with 语句</h3>
+<h3 id="8-with-语句"><a href="#8-with-语句" class="headerlink" title="8. with 语句"></a>8. with 语句</h3><p>不要使用<code>with</code>语句。。。。。。</p>
+<h2 id="1-4-console对象与控制台"><a href="#1-4-console对象与控制台" class="headerlink" title="1.4 console对象与控制台"></a>1.4 console对象与控制台</h2><h3 id="1-console对象"><a href="#1-console对象" class="headerlink" title="1. console对象"></a>1. console对象</h3><p><code>console</code>对象是 JavaScript 的原生对象，它有点像 Unix 系统的标准输出<code>stdout</code>和标准错误<code>stderr</code>，可以输出各种信息到控制台，并且还提供了很多有用的辅助方法。</p>
+<p><code>console</code>的常见用途有两个。</p>
+<ul>
+<li><strong>调试程序</strong>，显示网页代码运行时的错误信息。</li>
+<li>提供了一个<strong>命令行接口</strong>，用来<strong>与网页代码互动</strong>。</li>
+</ul>
+<h3 id="2-console对象的静态方法"><a href="#2-console对象的静态方法" class="headerlink" title="2. console对象的静态方法"></a>2. console对象的静态方法</h3><p><strong>2.1 console.log()，console.info()，console.debug()</strong></p>
+<p><code>console.log</code>方法用于在控制台输出信息。它可以接受一个或多个参数，将它们连接起来输出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello World&#x27;</span>)<br><span class="hljs-comment">// Hello World</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>)<br><span class="hljs-comment">// a b c</span><br></code></pre></td></tr></table></figure>
+
+<p><code>console.log</code>方法会自动在每次输出的<strong>结尾，添加换行符</strong>。</p>
+<ul>
+<li><code>%s</code> 字符串</li>
+<li><code>%d</code> 整数</li>
+<li><code>%i</code> 整数</li>
+<li><code>%f</code> 浮点数</li>
+<li><code>%o</code> 对象的链接</li>
+<li><code>%c</code> CSS 格式字符串</li>
+</ul>
+<p>使用<code>%c</code>占位符时，对应的参数必须是 CSS 代码，用来对输出内容进行 CSS 渲染。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<br>  <span class="hljs-string">&#x27;%cThis text is styled!&#x27;</span>,<br>  <span class="hljs-string">&#x27;color: red; background: yellow; font-size: 24px;&#x27;</span><br>)<br></code></pre></td></tr></table></figure>
+
+<p>上面代码运行后，输出的内容将显示为<strong>黄底红字。</strong></p>
+<p><code>console.log</code>方法的两种参数格式，可以结合在一起使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27; %s + %s &#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;= 2&#x27;</span>)<br><span class="hljs-comment">// 1 + 1  = 2</span><br></code></pre></td></tr></table></figure>
+
+<p><code>console.info</code>是<code>console.log</code>方法的别名，用法完全一样。只不过<code>console.info</code>方法会在输出信息的前面，加上一个<strong>蓝色图标</strong>。</p>
+<p><code>console.debug</code>方法与<code>console.log</code>方法类似，会在控制台<strong>输出调试信息</strong>。但是，默认情况下，<code>console.debug</code>输出的信息不会显示，只有在打开显示级别在<code>verbose</code>的情况下，才会显示。</p>
+<p><strong>2.2 console.warn()，console.error()</strong></p>
+<p><code>warn</code>方法和<code>error</code>方法也是在控制台输出信息，它们与<code>log</code>方法的不同之处在于，<code>warn</code>方法输出信息时，在最前面加一个黄色三角，表示警告；<code>error</code>方法输出信息时，在最前面加一个红色的叉，表示出错。同时，还会高亮显示输出文字和错误发生的堆栈。其他方面都一样。</p>
+<p><strong>2.3 console.table()</strong></p>
+<p>对于某些复合类型的数据，console.table方法可将其<strong>转为表格显示</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">let</span> languages = [<br>  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;JavaScript&quot;</span>, <span class="hljs-attr">fileExtension</span>: <span class="hljs-string">&quot;.js&quot;</span> &#125;,<br>  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;TypeScript&quot;</span>, <span class="hljs-attr">fileExtension</span>: <span class="hljs-string">&quot;.ts&quot;</span> &#125;,<br>  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;CoffeeScript&quot;</span>, <span class="hljs-attr">fileExtension</span>: <span class="hljs-string">&quot;.coffee&quot;</span> &#125;<br>];<br><br><span class="hljs-built_in">console</span>.table(languages);<br></code></pre></td></tr></table></figure>
+
+<p>上面代码的<code>language</code>变量，转为表格显示如下：</p>
+<table>
+<thead>
+<tr>
+<th>(index)</th>
+<th>name</th>
+<th>fileExtension</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>“JavaScript”</td>
+<td>“.js”</td>
+</tr>
+<tr>
+<td>1</td>
+<td>“TypeScript”</td>
+<td>“.ts”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>“CoffeeScript”</td>
+<td>“.coffee”</td>
+</tr>
+</tbody></table>
+<p>下面是显示表格内容的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">let</span> languages = &#123;<br>  <span class="hljs-attr">csharp</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;C#&quot;</span>, <span class="hljs-attr">paradigm</span>: <span class="hljs-string">&quot;object-oriented&quot;</span> &#125;,<br>  <span class="hljs-attr">fsharp</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;F#&quot;</span>, <span class="hljs-attr">paradigm</span>: <span class="hljs-string">&quot;functional&quot;</span> &#125;<br>&#125;;<br><br><span class="hljs-built_in">console</span>.table(languages);<br></code></pre></td></tr></table></figure>
+
+<p>上面代码的<code>language</code>，转为表格显示如下。</p>
+<table>
+<thead>
+<tr>
+<th>(index)</th>
+<th>name</th>
+<th>paradigm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>csharp</td>
+<td>“C#”</td>
+<td>“object-oriented”</td>
+</tr>
+<tr>
+<td>fsharp</td>
+<td>“F#”</td>
+<td>“functional”</td>
+</tr>
+</tbody></table>
+<p><strong>2.4 console.count()</strong></p>
+<p><code>count</code>方法用于计数，输出<strong>它</strong>被调用了多少次。</p>
+<p>该方法可直接调用console.count()</p>
+<p><strong>也可以接受一个字符串作为参数</strong>，作为标签，对执行次数进行分类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">user</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.count(user);<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hi &quot;</span> + user;<br>&#125;<br><br>greet(<span class="hljs-string">&#x27;bob&#x27;</span>)<br><span class="hljs-comment">// bob: 1</span><br><span class="hljs-comment">// &quot;hi bob&quot;</span><br><br>greet(<span class="hljs-string">&#x27;alice&#x27;</span>)<br><span class="hljs-comment">// alice: 1</span><br><span class="hljs-comment">// &quot;hi alice&quot;</span><br><br>greet(<span class="hljs-string">&#x27;bob&#x27;</span>)<br><span class="hljs-comment">// bob: 2</span><br><span class="hljs-comment">// &quot;hi bob&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码根据参数的不同，显示<code>bob</code>执行了两次，<code>alice</code>执行了一次。</p>
+<p><strong>2.5 console.dir()，console.dirxml()</strong></p>
+<p><code>dir</code>方法用来<strong>对一个对象进行检查（inspect），并以易于阅读和打印的格式显示。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">console</span>.log(&#123;<span class="hljs-attr">f1</span>: <span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-attr">f2</span>: <span class="hljs-string">&#x27;bar&#x27;</span>&#125;)<br><span class="hljs-comment">// Object &#123;f1: &quot;foo&quot;, f2: &quot;bar&quot;&#125;</span><br><br><span class="hljs-built_in">console</span>.dir(&#123;<span class="hljs-attr">f1</span>: <span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-attr">f2</span>: <span class="hljs-string">&#x27;bar&#x27;</span>&#125;)<br><span class="hljs-comment">// Object</span><br><span class="hljs-comment">//   f1: &quot;foo&quot;</span><br><span class="hljs-comment">//   f2: &quot;bar&quot;</span><br><span class="hljs-comment">//   __proto__: Object</span><br></code></pre></td></tr></table></figure>
+
+<p>该方法对于输出 DOM 对象非常有用，因为会显示 <strong>DOM 对象的所有属性</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">console</span>.dir(<span class="hljs-built_in">document</span>.body)<br></code></pre></td></tr></table></figure>
+
+<p>Node 环境之中，还可以<strong>指定以代码高亮的形式输出</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">console</span>.dir(obj, &#123;<span class="hljs-attr">colors</span>: <span class="hljs-literal">true</span>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><code>dirxml</code>方法主要用于以目录树的形式，<strong>显示 DOM 节点</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">console</span>.dirxml(<span class="hljs-built_in">document</span>.body)<br></code></pre></td></tr></table></figure>
+
+<p><strong>2.6 console.assert()</strong></p>
+<p>它接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为<code>false</code>，才会提示有错误，在控制台输出第二个参数(但不会中断程序执行。这样就相当于提示用户，内部状态不正确)，否则不会有任何结果。</p>
+<p><strong>2.7 console.time()，console.timeEnd()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.time(<span class="hljs-string">&#x27;Array initialize&#x27;</span>);<br><br><span class="hljs-keyword">let</span> array= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">1000000</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = array.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>  array[i] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br>&#125;;<br><br><span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">&#x27;Array initialize&#x27;</span>);<br><span class="hljs-comment">// Array initialize: 1914.481ms</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>2.8 console.group()，console.groupEnd()，console.groupCollapsed()</strong> </p>
+<p><code>console.group</code>和<code>console.groupEnd</code>这两个方法用于将显示的信息分组。它只在输出大量信息时有用，分在一组的信息，可以用鼠标折叠/展开。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;一级分组&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;一级分组的内容&#x27;</span>);<br><br><span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;二级分组&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;二级分组的内容&#x27;</span>);<br><br><span class="hljs-built_in">console</span>.groupEnd(); <span class="hljs-comment">// 二级分组结束</span><br><span class="hljs-built_in">console</span>.groupEnd(); <span class="hljs-comment">// 一级分组结束</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码会将“二级分组”显示在“一级分组”内部，并且“一级分组”和“二级分组”前面都有一个折叠符号，可以用来折叠本级的内容。</p>
+<p><code>console.groupCollapsed</code>方法与<code>console.group</code>方法很类似，唯一的区别是该组的内容，在第一次显示时是收起的（collapsed），而不是展开的。</p>
+<p><strong>2.9 console.trace()，console.clear()</strong></p>
+<p><code>console.trace</code>方法显示当前执行的代码在堆栈中的调用路径。</p>
+<p><code>console.clear</code>方法用于清除当前控制台的所有输出，将光标回置到第一行。如果用户选中了控制台的“Preserve log”选项，<code>console.clear</code>方法将不起作用。</p>
+<h3 id="3-控制台命令行API"><a href="#3-控制台命令行API" class="headerlink" title="3. 控制台命令行API"></a>3. 控制台命令行API</h3><p>浏览器控制台中，除了使用<code>console</code>对象，还可以使用一些控制台自带的命令行方法。</p>
+<p>（1）<code>$_</code></p>
+<p><code>$_</code>属性返回上一个表达式的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-number">2</span> + <span class="hljs-number">2</span><br><span class="hljs-comment">// 4</span><br>$_<br><span class="hljs-comment">// 4</span><br></code></pre></td></tr></table></figure>
+
+<p>（2）<code>$0</code> - <code>$4</code></p>
+<p>控制台保存了最近5个在 Elements 面板选中的 DOM 元素，<code>$0</code>代表倒数第一个（最近一个），<code>$1</code>代表倒数第二个，以此类推直到<code>$4</code>。</p>
+<p>（3）<code>$(selector)</code></p>
+<p><code>$(selector)</code>返回第一个匹配的元素，等同于<code>document.querySelector()</code>。注意，如果页面脚本对<code>$</code>有定义，则会覆盖原始的定义。比如，页面里面有 jQuery，控制台执行<code>$(selector)</code>就会采用 jQuery 的实现，返回一个数组。</p>
+<p>（4）<code>$$(selector)</code></p>
+<p><code>$$(selector)</code>返回选中的 DOM 对象，等同于<code>document.querySelectorAll</code>。</p>
+<p>（5）<code>$x(path)</code></p>
+<p><code>$x(path)</code>方法返回一个数组，包含匹配特定 XPath 表达式的所有 DOM 元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$x(<span class="hljs-string">&quot;//p[a]&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>上面代码返回所有包含<code>a</code>元素的<code>p</code>元素。</p>
+<p>（6）<code>inspect(object)</code></p>
+<p><code>inspect(object)</code>方法打开相关面板，并选中相应的元素，显示它的细节。DOM 元素在<code>Elements</code>面板中显示，比如<code>inspect(document)</code>会在 Elements 面板显示<code>document</code>元素。JavaScript 对象在控制台面板<code>Profiles</code>面板中显示，比如<code>inspect(window)</code>。</p>
+<p>（7）<code>getEventListeners(object)</code></p>
+<p><code>getEventListeners(object)</code>方法返回一个对象，该对象的成员为<code>object</code>登记了回调函数的各种事件（比如<code>click</code>或<code>keydown</code>），每个事件对应一个数组，数组的成员为该事件的回调函数。</p>
+<p>（8）<code>keys(object)</code>，<code>values(object)</code></p>
+<p><code>keys(object)</code>方法返回一个数组，包含<code>object</code>的所有键名。</p>
+<p><code>values(object)</code>方法返回一个数组，包含<code>object</code>的所有键值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> o = &#123;<span class="hljs-string">&#x27;p1&#x27;</span>: <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;p2&#x27;</span>: <span class="hljs-string">&#x27;b&#x27;</span>&#125;;<br><br>keys(o)<br><span class="hljs-comment">// [&quot;p1&quot;, &quot;p2&quot;]</span><br>values(o)<br><span class="hljs-comment">// [&quot;a&quot;, &quot;b&quot;]</span><br></code></pre></td></tr></table></figure>
+
+<p>（9）<code>monitorEvents(object[, events]) ，unmonitorEvents(object[, events])</code></p>
+<p><code>monitorEvents(object[, events])</code>方法监听特定对象上发生的特定事件。事件发生时，会返回一个<code>Event</code>对象，包含该事件的相关信息。<code>unmonitorEvents</code>方法用于停止监听。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">monitorEvents(<span class="hljs-built_in">window</span>, <span class="hljs-string">&quot;resize&quot;</span>);<br>monitorEvents(<span class="hljs-built_in">window</span>, [<span class="hljs-string">&quot;resize&quot;</span>, <span class="hljs-string">&quot;scroll&quot;</span>])<br></code></pre></td></tr></table></figure>
+
+<p>上面代码分别表示单个事件和多个事件的监听方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">monitorEvents($<span class="hljs-number">0</span>, <span class="hljs-string">&#x27;mouse&#x27;</span>);<br>unmonitorEvents($<span class="hljs-number">0</span>, <span class="hljs-string">&#x27;mousemove&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>上面代码表示如何停止监听。</p>
+<p><code>monitorEvents</code>允许监听同一大类的事件。所有事件可以分成四个大类。</p>
+<ul>
+<li>mouse：”mousedown”, “mouseup”, “click”, “dblclick”, “mousemove”, “mouseover”, “mouseout”, “mousewheel”</li>
+<li>key：”keydown”, “keyup”, “keypress”, “textInput”</li>
+<li>touch：”touchstart”, “touchmove”, “touchend”, “touchcancel”</li>
+<li>control：”resize”, “scroll”, “zoom”, “focus”, “blur”, “select”, “change”, “submit”, “reset”</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">monitorEvents($(<span class="hljs-string">&quot;#msg&quot;</span>), <span class="hljs-string">&quot;key&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>上面代码表示监听所有<code>key</code>大类的事件。</p>
+<p>（10）其他方法</p>
+<p>命令行 API 还提供以下方法。</p>
+<ul>
+<li><code>clear()</code>：清除控制台的历史。</li>
+<li><code>copy(object)</code>：复制特定 DOM 元素到剪贴板。</li>
+<li><code>dir(object)</code>：显示特定对象的所有属性，是<code>console.dir</code>方法的别名。</li>
+<li><code>dirxml(object)</code>：显示特定对象的 XML 形式，是<code>console.dirxml</code>方法的别名。</li>
+</ul>
+<h3 id="4-debugger语句"><a href="#4-debugger语句" class="headerlink" title="4. debugger语句"></a>4. debugger语句</h3><p><code>debugger</code>语句主要用于除错，作用是设置断点</p>
+<p>Chrome 浏览器中，当代码运行到<code>debugger</code>语句时，就会暂停运行，自动打开脚本源码界面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>  <span class="hljs-built_in">console</span>.log(i);<br>  <span class="hljs-keyword">if</span> (i === <span class="hljs-number">2</span>) <span class="hljs-keyword">debugger</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面代码打印出0，1，2以后，就会暂停，自动打开源码界面，等待进一步处理。</p>
+<h2 id="2-标准库"><a href="#2-标准库" class="headerlink" title="2. 标准库"></a>2. 标准库</h2><h3 id="2-1-Object-对象"><a href="#2-1-Object-对象" class="headerlink" title="2.1 Object 对象"></a>2.1 Object 对象</h3><h4 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>JavaScript 原生提供<code>Object</code>对象（注意起首的<code>O</code>是大写），本章介绍该对象原生的各种方法。</p>
+<p><strong>JavaScript 的所有其他对象都继承自<code>Object</code>对象，即那些对象都是<code>Object</code>的实例。</strong></p>
+<p><code>Object</code>对象的原生方法分成两类：<code>Object</code><strong>本身的方法与<code>Object</code>的实例方法</strong>。</p>
+<h4 id="2-Object"><a href="#2-Object" class="headerlink" title="2. Object()"></a>2. Object()</h4><p><code>Object</code><strong>本身是一个函数</strong>，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。</p>
+<p>如果参数为空（或者为<code>undefined</code>和<code>null</code>），<code>Object()</code>返回一个空对象。</p>
+<p>如果参数是原始类型的值，<code>Object</code>方法将其转为<strong>对应的包装对象的实例</strong></p>
+<p>如果<code>Object</code>方法的参数是一个对象，它总是返回该对象</p>
+<h4 id="3-Object-构造函数"><a href="#3-Object-构造函数" class="headerlink" title="3. Object 构造函数"></a>3. Object 构造函数</h4><p><code>Object</code>构造函数的首要用途，是直接通过它来生成新对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-Object-的静态方法"><a href="#4-Object-的静态方法" class="headerlink" title="4. Object 的静态方法"></a>4. Object 的静态方法</h4><p><code>Object</code>对象自身的方法。</p>
+<p><strong>4.1 Object.keys()，Object.getOwnPropertyNames()</strong></p>
+<p><code>Object.keys</code>方法的<strong>参数是一个对象</strong>，返回一个数组。该<strong>数组的成员</strong>都是<strong>该对象自身</strong>的（而不是继承的）所有<strong>属性名</strong>。</p>
+<p><code>Object.keys</code>方法<strong>只返回可枚举的属性</strong>（详见《对象属性的描述对象》一章），<code>Object.getOwnPropertyNames</code>方法<strong>还返回不可枚举的属性名。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> a = [<span class="hljs-string">&#x27;Hello&#x27;</span>, <span class="hljs-string">&#x27;World&#x27;</span>];<br><br><span class="hljs-built_in">Object</span>.keys(a) <span class="hljs-comment">// [&quot;0&quot;, &quot;1&quot;]</span><br><span class="hljs-built_in">Object</span>.getOwnPropertyNames(a) <span class="hljs-comment">// [&quot;0&quot;, &quot;1&quot;, &quot;length&quot;]</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<strong>数组的<code>length</code>属性是不可枚举的属性</strong>，所以只出现在<code>Object.getOwnPropertyNames</code>方法的返回结果中。</p>
+<p>由于 JavaScript 没有提供计算对象属性个数的方法，所以可以用这两个方法代替。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">p1</span>: <span class="hljs-number">123</span>,<br>  <span class="hljs-attr">p2</span>: <span class="hljs-number">456</span><br>&#125;;<br><br><span class="hljs-built_in">Object</span>.keys(obj).length <span class="hljs-comment">// 2</span><br><span class="hljs-built_in">Object</span>.getOwnPropertyNames(obj).length <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>一般情况下，几乎总是使用<code>Object.keys</code>方法，遍历对象的属性。</strong></p>
+<p><strong>4.2 其他方法</strong></p>
+<p><strong>1）对象属性模型的相关方法</strong></p>
+<ul>
+<li><code>Object.getOwnPropertyDescriptor()</code>：获取某个属性的描述对象。</li>
+<li><code>Object.defineProperty()</code>：通过描述对象，定义某个属性。</li>
+<li><code>Object.defineProperties()</code>：通过描述对象，定义多个属性。</li>
+</ul>
+<p><strong>（2）控制对象状态的方法</strong></p>
+<ul>
+<li><code>Object.preventExtensions()</code>：防止对象扩展。</li>
+<li><code>Object.isExtensible()</code>：判断对象是否可扩展。</li>
+<li><code>Object.seal()</code>：禁止对象配置。</li>
+<li><code>Object.isSealed()</code>：判断一个对象是否可配置。</li>
+<li><code>Object.freeze()</code>：冻结一个对象。</li>
+<li><code>Object.isFrozen()</code>：判断一个对象是否被冻结。</li>
+</ul>
+<p><strong>（3）原型链相关方法</strong></p>
+<ul>
+<li><code>Object.create()</code>：该方法可以指定原型对象和属性，返回一个新的对象。</li>
+<li><code>Object.getPrototypeOf()</code>：获取对象的<code>Prototype</code>对象。</li>
+</ul>
+<h4 id="5-Object-的实例方法"><a href="#5-Object-的实例方法" class="headerlink" title="5. Object 的实例方法"></a>5. Object 的实例方法</h4><p>除了静态方法，还有不少方法定义在<code>Object.prototype</code>对象。它们称为实例方法，所有<code>Object</code>的实例对象都继承了这些方法。</p>
+<p><code>Object</code>实例对象的方法，主要有以下六个。</p>
+<ul>
+<li><code>Object.prototype.valueOf()</code>：返回当前对象<strong>对应的值</strong>。</li>
+<li><code>Object.prototype.toString()</code>：返回当前对象对应的<strong>字符串形式。</strong></li>
+<li><code>Object.prototype.toLocaleString()</code>：返回当前对象对应的<strong>本地字符串形式。</strong></li>
+<li><code>Object.prototype.hasOwnProperty()</code>：判断某个属性是否为当前对象自身的属性，还是继承自原型对象的属性。</li>
+<li><code>Object.prototype.isPrototypeOf()</code>：判断当前对象是否为另一个对象的原型。</li>
+<li><code>Object.prototype.propertyIsEnumerable()</code>：判断某个属性是否可枚举。</li>
+</ul>
+<p><strong>5.1 Object.prototype.valueOf()</strong> </p>
+<p><code>valueOf</code>方法的作用是<strong>返回一个对象的“值”，默认情况下返回对象本身。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br>obj.valueOf() === obj <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<p><code>valueOf</code>方法的主要用途是，JavaScript <strong>自动类型转换时会默认调用这个方法</strong></p>
+<p><strong>5.2 Object.prototype.toString()</strong> </p>
+<p><code>toString</code>方法的作用是返回一个<strong>对象的字符串形式</strong>，默认情况下返回<strong>类型字符串</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> o1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br>o1.toString() <span class="hljs-comment">// &quot;[object Object]&quot;</span><br><br><span class="hljs-keyword">var</span> o2 = &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>&#125;;<br>o2.toString() <span class="hljs-comment">// &quot;[object Object]&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
             <hr>
             <div>
@@ -462,8 +706,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/12/Markdown%E5%86%99%E6%B3%95/">
-                        <span class="hidden-mobile">Markdown写法</span>
+                      <a href="/2021/11/12/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB%E5%92%8C%E6%95%B4%E7%90%86%E6%96%87%E7%8C%AE%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E9%AA%8C%E3%80%82/">
+                        <span class="hidden-mobile">关于如何快速阅读和整理文献的相关经验</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
