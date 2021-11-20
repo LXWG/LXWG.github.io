@@ -26,7 +26,7 @@
 <meta property="og:description" content="JavaScript学习笔记1. 语法专题1.1 数据类型的转换1. 概述JavaScript 是一种动态类型语言，变量没有类型限制，可以随时赋予任意值。 1let x &#x3D; y ? 1 : &amp;#x27;a&amp;#x27;;  2. 强制转换2.1 Number()将任意类型的值转化成数值 （1）原始类型值 12345678Number(324) &#x2F;&#x2F; 324Number(&amp;#x27;324&amp;#x27;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T03:02:04.000Z">
-<meta property="article:modified_time" content="2021-11-19T08:03:29.898Z">
+<meta property="article:modified_time" content="2021-11-20T06:15:37.072Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="入门">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      35k 字
+      43k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      109 分钟
+      133 分钟
     </span>
   
 
@@ -278,7 +278,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>(&#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>&#125;)<br><span class="hljs-comment">// &quot;[object Object]&quot;</span><br><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-built_in">String</span>(&#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>&#125;.toString())<br><span class="hljs-comment">// &quot;[object Object]&quot;</span><br></code></pre></td></tr></table></figure>
 
 <h5 id="2-3-Boolean"><a href="#2-3-Boolean" class="headerlink" title="2.3 Boolean()"></a>2.3 Boolean()</h5><p><code>Boolean()</code>函数可以将<strong>任意类型的值</strong>转为布尔值。</p>
+<blockquote>
 <p>它的转换规则相对简单：除了以下五个值的转换结果为<code>false</code>，其他的值全部为<code>true</code>。</p>
+</blockquote>
 <ul>
 <li><code>undefined</code></li>
 <li><code>null</code></li>
@@ -962,8 +964,155 @@
 
 <p>上面代码中，先产生一个所有 Email 地址组成的数组，然后再过滤出以<code>t</code>开头的 Email 地址，最后将它打印出来。</p>
 <h4 id="2-4-包装对象"><a href="#2-4-包装对象" class="headerlink" title="2.4 包装对象"></a>2.4 包装对象</h4><h5 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h5><p>对象是 JavaScript 语言最主要的数据类型，三种原始类型的值——数值、字符串、布尔值——在一定条件下，也会<strong>自动转为对象</strong>，也就是<strong>原始类型的“包装对象”（wrapper）</strong>。</p>
-<p>所谓“包装对象”，指的是与数值、字符串、布尔值分别相对应的<code>Number</code>、<code>String</code>、<code>Boolean</code>三个<strong>原生对象</strong>。这三个原生对象可以把原始类型的值变成（包装成）对象。</p>
+<p>所谓“包装对象”，指的是与<strong>数值、字符串、布尔值</strong>分别相对应的<code>Number</code>、<code>String</code>、<code>Boolean</code>三个<strong>原生对象</strong>。这三个<strong>原生对象可以把原始类型的值变成（包装成）对象</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> v1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Number</span>(<span class="hljs-number">123</span>);<br><span class="hljs-keyword">var</span> v2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">&#x27;abc&#x27;</span>);<br><span class="hljs-keyword">var</span> v3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">true</span>);<br><br><span class="hljs-keyword">typeof</span> v1 <span class="hljs-comment">// &quot;object&quot;</span><br><span class="hljs-keyword">typeof</span> v2 <span class="hljs-comment">// &quot;object&quot;</span><br><span class="hljs-keyword">typeof</span> v3 <span class="hljs-comment">// &quot;object&quot;</span><br><br>v1 === <span class="hljs-number">123</span> <span class="hljs-comment">// false</span><br>v2 === <span class="hljs-string">&#x27;abc&#x27;</span> <span class="hljs-comment">// false</span><br>v3 === <span class="hljs-literal">true</span> <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
 
+<blockquote>
+<p>包装对象的设计目的，首先是使得“对象”这种类型可以覆盖 JavaScript 所有的值，整门语言有一个<strong>通用的数据模型</strong>，其次是使得原始类型的值也有办法调用自己的方法。</p>
+</blockquote>
+<h5 id="2-实例方法"><a href="#2-实例方法" class="headerlink" title="2. 实例方法"></a>2. 实例方法</h5><p>三种包装对象各自提供了许多实例方法，详见后文。这里介绍两种它们共同具有、从<code>Object</code>对象继承的方法：<code>valueOf()</code>和<code>toString()</code>。</p>
+<h6 id="2-1-valueOf"><a href="#2-1-valueOf" class="headerlink" title="2.1 valueOf()"></a>2.1 valueOf()</h6><p><code>valueOf()</code>方法返回包装对象实例对应的<strong>原始类型的值</strong>。</p>
+<h6 id="2-2-toString"><a href="#2-2-toString" class="headerlink" title="2.2 toString()"></a>2.2 toString()</h6><p><code>toString()</code>方法返回对应的字符串形式。</p>
+<h5 id="3-原始类型与实例对象的自动转换"><a href="#3-原始类型与实例对象的自动转换" class="headerlink" title="3. 原始类型与实例对象的自动转换"></a>3. 原始类型与实例对象的自动转换</h5><p>某些场合，原始类型的值会<strong>自动当作包装对象调用</strong>，即调用包装对象的属性和方法。这时，JavaScript 引擎会自动将原始类型的值转为包装对象实例，并在使用后立刻销毁实例。</p>
+<p>比如，字符串可以调用<code>length</code>属性，返回字符串的长度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;abc&#x27;</span>.length <span class="hljs-comment">// 3</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>abc</code>是一个字符串，<strong>本身不是对象，不能调用<code>length</code>属性</strong>。JavaScript 引擎自动将其转为包装对象，在这个对象上调用<code>length</code>属性。<strong>调用结束后，这个临时对象就会被销毁</strong>。这就叫原始类型与实例对象的自动转换。</p>
+<p>自动转换生成的包装对象是只读的，无法修改。所以，字符串无法添加新属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> s = <span class="hljs-string">&#x27;Hello World&#x27;</span>;<br>s.x = <span class="hljs-number">123</span>;<br>s.x <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="4-自定义方法"><a href="#4-自定义方法" class="headerlink" title="4. 自定义方法"></a>4. 自定义方法</h5><p>除了原生的实例方法，包装对象还可以<strong>自定义方法和属性，供原始类型的值直接调用</strong>。</p>
+<h4 id="2-5-Boolean对象"><a href="#2-5-Boolean对象" class="headerlink" title="2.5 Boolean对象"></a>2.5 Boolean对象</h4><h5 id="1-概述-4"><a href="#1-概述-4" class="headerlink" title="1. 概述"></a>1. 概述</h5><p>作为构造函数，它主要用于生成布尔值的<strong>包装对象实例</strong>。</p>
+<p><code>false</code>对应的包装<strong>对象实例****，</strong>布尔运算结果也是<code>true</code>**。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>)) &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;true&#x27;</span>);<br>&#125; <span class="hljs-comment">// true</span><br><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>).valueOf()) &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;true&#x27;</span>);<br>&#125; <span class="hljs-comment">// 无输出</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码的第一个例子之所以得到<code>true</code>，是因为<code>false</code>对应的包装对象实例是一个对象，进行逻辑运算时，被自动转化成布尔值<code>true</code>（因为所有对象对应的布尔值都是<code>true</code>）。而实例的<code>valueOf</code>方法，则返回实例对应的原始值，本例为<code>false</code>。</p>
+<h5 id="2-Boolean"><a href="#2-Boolean" class="headerlink" title="2. Boolean ()"></a>2. Boolean ()</h5><p>数据转换中已经叙述</p>
+<h4 id="2-6-Number"><a href="#2-6-Number" class="headerlink" title="2.6 Number()"></a>2.6 Number()</h4><h5 id="1-概述-5"><a href="#1-概述-5" class="headerlink" title="1.概述"></a>1.概述</h5><p><code>Number</code>对象是数值对应的包装对象，可以作为<strong>构造函数</strong>使用，也可以作为<strong>工具函数</strong>使用。</p>
+<p>构造函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> n = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Number</span>(<span class="hljs-number">1</span>);<br><span class="hljs-keyword">typeof</span> n <span class="hljs-comment">// &quot;object</span><br></code></pre></td></tr></table></figure>
+
+<p>工具函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">Number</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="2-静态属性"><a href="#2-静态属性" class="headerlink" title="2. 静态属性"></a>2. 静态属性</h5><p><code>Number</code>对象拥有以下一些静态属性（即<strong>直接定义在<code>Number</code>对象上的属性</strong>，而不是定义在实例上的属性）。</p>
+<ul>
+<li><code>Number.POSITIVE_INFINITY</code>：正的无限，指向<code>Infinity</code>。</li>
+<li><code>Number.NEGATIVE_INFINITY</code>：负的无限，指向<code>-Infinity</code>。</li>
+<li><code>Number.NaN</code>：表示非数值，指向<code>NaN</code>。</li>
+<li><code>Number.MIN_VALUE</code>：表示最小的正数（即最接近0的正数，在64位浮点数体系中为<code>5e-324</code>），相应的，最接近0的负数为<code>-Number.MIN_VALUE</code>。</li>
+<li><code>Number.MAX_SAFE_INTEGER</code>：表示能够精确表示的最大整数，即<code>9007199254740991</code>。</li>
+<li><code>Number.MIN_SAFE_INTEGER</code>：表示能够精确表示的最小整数，即<code>-9007199254740991</code>。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">Number</span>.POSITIVE_INFINITY <span class="hljs-comment">// Infinity</span><br><span class="hljs-built_in">Number</span>.NEGATIVE_INFINITY <span class="hljs-comment">// -Infinity</span><br><span class="hljs-built_in">Number</span>.NaN <span class="hljs-comment">// NaN</span><br><br><span class="hljs-built_in">Number</span>.MAX_VALUE<br><span class="hljs-comment">// 1.7976931348623157e+308</span><br><span class="hljs-built_in">Number</span>.MAX_VALUE &lt; <span class="hljs-literal">Infinity</span><br><span class="hljs-comment">// true</span><br><br><span class="hljs-built_in">Number</span>.MIN_VALUE<br><span class="hljs-comment">// 5e-324</span><br><span class="hljs-built_in">Number</span>.MIN_VALUE &gt; <span class="hljs-number">0</span><br><span class="hljs-comment">// true</span><br><br><span class="hljs-built_in">Number</span>.MAX_SAFE_INTEGER <span class="hljs-comment">// 9007199254740991</span><br><span class="hljs-built_in">Number</span>.MIN_SAFE_INTEGER <span class="hljs-comment">// -9007199254740991</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="3-实例方法-1"><a href="#3-实例方法-1" class="headerlink" title="3. 实例方法"></a>3. 实例方法</h5><p><code>Number</code>对象有4个实例方法，都跟将数值转<strong>换成指定格式</strong>有关。</p>
+<h6 id="3-1-Number-prototype-toString"><a href="#3-1-Number-prototype-toString" class="headerlink" title="3.1 Number.prototype.toString()"></a>3.1 Number.prototype.toString()</h6><p><code>Number</code>对象部署了自己的<code>toString</code>方法，用来将一个数值转为字符串形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">(<span class="hljs-number">10</span>).toString() <span class="hljs-comment">// &quot;10&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>toString</code>方法<strong>可以接受一个参数，表示输出的进制</strong>。如果省略这个参数，默认将数值先转为十进制，再输出字符串；否则，就根据参数指定的进制，将一个数字转化成某个进制的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">(<span class="hljs-number">10</span>).toString(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;1010&quot;</span><br>(<span class="hljs-number">10</span>).toString(<span class="hljs-number">8</span>) <span class="hljs-comment">// &quot;12&quot;</span><br>(<span class="hljs-number">10</span>).toString(<span class="hljs-number">16</span>) <span class="hljs-comment">// &quot;a&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，**<code>10</code>一定要放在括号里<strong>，这样表明后面的点表示调用对象属性。</strong>如果不加括号，这个点会被 JavaScript 引擎解释成小数点**，从而报错。</p>
+<p>只要能够让 JavaScript 引擎不混淆小数点和对象的点运算符，各种写法都能用。除了为<code>10</code>加上括号，还可以在<code>10</code>后面加两个点，JavaScript 会把第一个点理解成小数点（即<code>10.0</code>），把第二个点理解成调用对象属性，从而得到正确结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-number">10.</span>.toString(<span class="hljs-number">2</span>)<br><span class="hljs-comment">// &quot;1010&quot;</span><br><br><span class="hljs-comment">// 其他方法还包括</span><br><span class="hljs-number">10</span> .toString(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;1010&quot;</span><br><span class="hljs-number">10.0</span>.toString(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;1010&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>这实际上意味着，可以直接对一个小数使用<code>toString</code>方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-number">10.5</span>.toString() <span class="hljs-comment">// &quot;10.5&quot;</span><br><span class="hljs-number">10.5</span>.toString(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;1010.1&quot;</span><br><span class="hljs-number">10.5</span>.toString(<span class="hljs-number">8</span>) <span class="hljs-comment">// &quot;12.4&quot;</span><br><span class="hljs-number">10.5</span>.toString(<span class="hljs-number">16</span>) <span class="hljs-comment">// &quot;a.8&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>通过方括号运算符也可以调用<code>toString</code>方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-number">10</span>[<span class="hljs-string">&#x27;toString&#x27;</span>](<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;1010&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>toString</code>方法只能将十进制的数，转为其他进制的字符串。如果要将其他进制的数，转回十进制，需要使用<code>parseInt</code>方法。</p>
+<h6 id="3-2-Number-prototype-toFixed"><a href="#3-2-Number-prototype-toFixed" class="headerlink" title="3.2 Number.prototype.toFixed()"></a>3.2 Number.prototype.toFixed()</h6><p><code>toFixed()</code>方法先将一个数<strong>转为指定位数的小数</strong>，然后返回这个<strong>小数对应的字符串。</strong>        <code>toFixed()</code>方法的参数为小数位数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">(<span class="hljs-number">10</span>).toFixed(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;10.00&quot;</span><br><span class="hljs-number">10.005</span>.toFixed(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;10.01&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>由于浮点数的原因，小数<code>5</code>的四舍五入是不确定的，使用的时候必须小心。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">(<span class="hljs-number">10.055</span>).toFixed(<span class="hljs-number">2</span>) <span class="hljs-comment">// 10.05</span><br>(<span class="hljs-number">10.005</span>).toFixed(<span class="hljs-number">2</span>) <span class="hljs-comment">// 10.01</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="3-3-Number-prototype-toExponential"><a href="#3-3-Number-prototype-toExponential" class="headerlink" title="3.3 Number.prototype.toExponential()"></a>3.3 Number.prototype.toExponential()</h6><p><code>toExponential</code>方法用于将一个数转为科学计数法形式，<strong>参数是小数点后有效数字的位数</strong>，范围为0到100，超出这个范围，会抛出一个 RangeError 错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">(<span class="hljs-number">10</span>).toExponential()  <span class="hljs-comment">// &quot;1e+1&quot;</span><br>(<span class="hljs-number">10</span>).toExponential(<span class="hljs-number">1</span>) <span class="hljs-comment">// &quot;1.0e+1&quot;</span><br>(<span class="hljs-number">10</span>).toExponential(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;1.00e+1&quot;</span><br><br>(<span class="hljs-number">1234</span>).toExponential()  <span class="hljs-comment">// &quot;1.234e+3&quot;</span><br>(<span class="hljs-number">1234</span>).toExponential(<span class="hljs-number">1</span>) <span class="hljs-comment">// &quot;1.2e+3&quot;</span><br>(<span class="hljs-number">1234</span>).toExponential(<span class="hljs-number">2</span>) <span class="hljs-comment">// &quot;1.23e+3&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="3-4-Number-prototype-toPrecision"><a href="#3-4-Number-prototype-toPrecision" class="headerlink" title="3.4 Number.prototype.toPrecision()"></a>3.4 Number.prototype.toPrecision()</h6><p><code>Number.prototype.toPrecision()</code>方法用于将一个<strong>数转为指定位数的有效数字</strong>。</p>
+<p>该方法用于四舍五入时不太可靠，跟浮点数不是精确储存有关。</p>
+<h6 id="3-5-Number-prototype-toLocaleString"><a href="#3-5-Number-prototype-toLocaleString" class="headerlink" title="3.5 Number.prototype.toLocaleString()"></a>3.5 Number.prototype.toLocaleString()</h6><p><code>Number.prototype.toLocaleString()</code>方法接受一个地区码作为参数，返回一个字符串，表示当前数字在该地区的当地书写形式。</p>
+<h5 id="4-自定义方法-1"><a href="#4-自定义方法-1" class="headerlink" title="4. 自定义方法"></a>4. 自定义方法</h5><p>与其他对象一样，<code>Number.prototype</code>对象上面可以自定义方法，<strong>被<code>Number</code>的实例继承。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">Number</span>.prototype.add = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">x</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span> + x;<br>&#125;;<br><br><span class="hljs-number">8</span>[<span class="hljs-string">&#x27;add&#x27;</span>](<span class="hljs-number">2</span>) <span class="hljs-comment">// 10</span><br></code></pre></td></tr></table></figure>
+
+<p>注意，数值的自定义方法，<strong>只能定义在它的原型对象<code>Number.prototype</code>上面</strong>，数值本身是无法自定义属性的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> n = <span class="hljs-number">1</span>;<br>n.x = <span class="hljs-number">1</span>;<br>n.x <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>n</code>是一个原始类型的数值。直接在它上面新增一个属性<code>x</code>，不会报错，但毫无作用，总是返回<code>undefined</code>。这是因为一旦被调用属性，<code>n</code>就自动转为<code>Number</code>的实例对象，调用结束后，该对象自动销毁。所以，下一次调用<code>n</code>的属性时，实际取到的是另一个对象，属性<code>x</code>当然就读不出来。</p>
+<h4 id="2-7-String-对象"><a href="#2-7-String-对象" class="headerlink" title="2.7 String()对象"></a>2.7 String()对象</h4><h5 id="1-概述-6"><a href="#1-概述-6" class="headerlink" title="1. 概述"></a>1. 概述</h5><p><code>String</code>对象是 JavaScript 原生提供的三个包装对象之一，用来生成<strong>字符串对象</strong>。</p>
+<p>字符串对象是一个类似数组的对象（很像数组，但不是数组）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">&#x27;abc&#x27;</span>)<br><span class="hljs-comment">// String &#123;0: &quot;a&quot;, 1: &quot;b&quot;, 2: &quot;c&quot;, length: 3&#125;</span><br><br>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">&#x27;abc&#x27;</span>))[<span class="hljs-number">1</span>] <span class="hljs-comment">// &quot;b&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，字符串<code>abc</code>对应的字符串对象，有数值键（<code>0</code>、<code>1</code>、<code>2</code>）和<code>length</code>属性，所以可以像数组那样取值。</p>
+<h5 id="2-静态方法"><a href="#2-静态方法" class="headerlink" title="2. 静态方法"></a>2. 静态方法</h5><h6 id="2-1-String-fromCharCode"><a href="#2-1-String-fromCharCode" class="headerlink" title="2.1 String.fromCharCode()"></a>2.1 String.fromCharCode()</h6><p><code>String</code>对象提供的静态方法（即<strong>定义在对象本身，而不是定义在对象实例的方法</strong>），主要是<code>String.fromCharCode()</code>。该方法的参数是<strong>一个或多个数值，代表 Unicode 码点，</strong>返回值是这些<strong>码点组成的字符串</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">String</span>.fromCharCode() <span class="hljs-comment">// &quot;&quot;</span><br><span class="hljs-built_in">String</span>.fromCharCode(<span class="hljs-number">97</span>) <span class="hljs-comment">// &quot;a&quot;</span><br><span class="hljs-built_in">String</span>.fromCharCode(<span class="hljs-number">104</span>, <span class="hljs-number">101</span>, <span class="hljs-number">108</span>, <span class="hljs-number">108</span>, <span class="hljs-number">111</span>)<br><span class="hljs-comment">// &quot;hello&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>String.fromCharCode</code>方法的<strong>参数为空，就返回空字符串</strong>；否则，返回参数对应的 Unicode 字符串。</p>
+<p>码点大于<code>0xFFFF</code>的字符占用四个字节，而 JavaScript 默认支持两个字节的字符。这种情况下，必须把<code>0x20BB7</code>拆成两个字符表示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">String</span>.fromCharCode(<span class="hljs-number">0xD842</span>, <span class="hljs-number">0xDFB7</span>)<br><span class="hljs-comment">// &quot;𠮷&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="3-实例属性"><a href="#3-实例属性" class="headerlink" title="3. 实例属性"></a>3. 实例属性</h5><h6 id="3-1-String-prototype-length"><a href="#3-1-String-prototype-length" class="headerlink" title="3.1 String.prototype.length"></a>3.1 String.prototype.length</h6><p>字符串实例的<code>length</code>属性返回字符串的长度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;abc&#x27;</span>.length <span class="hljs-comment">// 3</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="4-实例方法"><a href="#4-实例方法" class="headerlink" title="4. 实例方法"></a>4. 实例方法</h5><h6 id="4-1-String-prototype-charAt"><a href="#4-1-String-prototype-charAt" class="headerlink" title="4.1 String.prototype.charAt()"></a>4.1 String.prototype.charAt()</h6><p><code>charAt</code>方法返回指定位置的字符，参数是从<code>0</code>开始编号的位置。</p>
+<p>这个方法完全可以用数组下标替代。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;abc&#x27;</span>.charAt(<span class="hljs-number">1</span>) <span class="hljs-comment">// &quot;b&quot;</span><br><span class="hljs-string">&#x27;abc&#x27;</span>[<span class="hljs-number">1</span>] <span class="hljs-comment">// &quot;b&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果参数为负数，或大于等于字符串的长度，<code>charAt</code><strong>返回空字符串</strong>。</p>
+<h6 id="4-2-String-prototype-charCodeAt"><a href="#4-2-String-prototype-charCodeAt" class="headerlink" title="4.2 String.prototype.charCodeAt()"></a>4.2 String.prototype.charCodeAt()</h6><p><code>charCodeAt()</code>方法返回字符串指定位置的 Unicode 码点（十进制表示），相当于<code>String.fromCharCode()</code>的逆操作。</p>
+<p>如果没有任何参数，<code>charCodeAt</code>返回首字符的 Unicode 码点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&#x27;abc&#x27;</span>.charCodeAt() <span class="hljs-comment">// 97</span><br></code></pre></td></tr></table></figure>
+
+<p>如果参数为负数，或大于等于字符串的长度，<code>charCodeAt</code>返回<code>NaN</code>。</p>
+<p>注意，<code>charCodeAt</code>方法返回的 Unicode 码点不会大于65536（0xFFFF），也就是说，只返回两个字节的字符的码点。</p>
+<h6 id="4-3-String-prototype-concat"><a href="#4-3-String-prototype-concat" class="headerlink" title="4.3 String.prototype.concat()"></a>4.3 String.prototype.concat()</h6><p><code>concat</code>方法用于连接两个字符串，返回一个新字符串，不改变原字符串。</p>
+<p>该方法可以接受多个参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&#x27;a&#x27;</span>.concat(<span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>) <span class="hljs-comment">// &quot;abc&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果参数不是字符串，<code>concat</code>方法会<strong>将其先转为字符串</strong>，然后再连接。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> one = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> two = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">var</span> three = <span class="hljs-string">&#x27;3&#x27;</span>;<br><br><span class="hljs-string">&#x27;&#x27;</span>.concat(one, two, three) <span class="hljs-comment">// &quot;123&quot;</span><br>one + two + three <span class="hljs-comment">// &quot;33&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-4-String-prototype-slice"><a href="#4-4-String-prototype-slice" class="headerlink" title="4.4 String.prototype.slice()"></a>4.4 String.prototype.slice()</h6><p><code>slice()</code>方法用于从原字符串取出子字符串并返回，不改变原字符串。它的第一个参数是子字符串的开始位置，第二个参数是子字符串的结束位置（不含该位置）。</p>
+<h6 id="4-5-String-prototype-substring"><a href="#4-5-String-prototype-substring" class="headerlink" title="4.5 String.prototype.substring()"></a>4.5 String.prototype.substring()</h6><p><code>substring</code>方法用于从原字符串<strong>取出子字符串</strong>并返回，不改变原字符串，跟<code>slice</code>方法很相像。</p>
+<p>如果第一个参数大于第二个参数，<code>substring</code>方法会自动更换两个参数的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&#x27;JavaScript&#x27;</span>.substring(<span class="hljs-number">10</span>, <span class="hljs-number">4</span>) <span class="hljs-comment">// &quot;Script&quot;</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-string">&#x27;JavaScript&#x27;</span>.substring(<span class="hljs-number">4</span>, <span class="hljs-number">10</span>) <span class="hljs-comment">// &quot;Script&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果参数是负数，<code>substring</code>方法会自动将负数转为0。</p>
+<p>由于这些规则违反直觉，因此不建议使用<code>substring</code>方法，应该优先使用<code>slice</code>。</p>
+<h6 id="4-6-String-prototype-substr"><a href="#4-6-String-prototype-substr" class="headerlink" title="4.6 String.prototype.substr()"></a>4.6 String.prototype.substr()</h6><p><code>substr</code>方法用于从原字符串取出子字符串并返回，不改变原字符串，跟<code>slice</code>和<code>substring</code>方法的作用相同。</p>
+<p><code>substr</code>方法的第一个参数是子字符串的开始位置（从0开始计算），<strong>第二个参数是子字符串的长度。</strong></p>
+<h6 id="4-7-String-prototype-indexOf-，String-prototype-lastIndexOf"><a href="#4-7-String-prototype-indexOf-，String-prototype-lastIndexOf" class="headerlink" title="4.7 String.prototype.indexOf()，String.prototype.lastIndexOf()"></a>4.7 String.prototype.indexOf()，String.prototype.lastIndexOf()</h6><p><code>indexOf</code>方法用于确定一个字符串在另一个字符串中第一次出现的位置，返回结果是匹配开始的位置。如果返回<code>-1</code>，就表示不匹配。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&#x27;hello world&#x27;</span>.indexOf(<span class="hljs-string">&#x27;o&#x27;</span>) <span class="hljs-comment">// 4</span><br><span class="hljs-string">&#x27;JavaScript&#x27;</span>.indexOf(<span class="hljs-string">&#x27;script&#x27;</span>) <span class="hljs-comment">// -1</span><br></code></pre></td></tr></table></figure>
+
+<p><code>indexOf</code>方法还可以<strong>接受第二个参数，表示从该位置开始向后匹配。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;hello world&#x27;</span>.indexOf(<span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-number">6</span>) <span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-8-String-prototype-trim"><a href="#4-8-String-prototype-trim" class="headerlink" title="4.8 String.prototype.trim()"></a>4.8 String.prototype.trim()</h6><p><code>trim</code>方法用于去除字符串两端的空格，返回一个新字符串，不改变原字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;  hello world  &#x27;</span>.trim()<br><span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>该方法去除的不仅是空格，还包括制表符（<code>\t</code>、<code>\v</code>）、换行符（<code>\n</code>）和回车符（<code>\r</code>）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;\r\nabc \t&#x27;</span>.trim() <span class="hljs-comment">// &#x27;abc&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-9-String-prototype-toLowerCase-，String-prototype-toUpperCase"><a href="#4-9-String-prototype-toLowerCase-，String-prototype-toUpperCase" class="headerlink" title="4.9 String.prototype.toLowerCase()，String.prototype.toUpperCase()"></a>4.9 String.prototype.toLowerCase()，String.prototype.toUpperCase()</h6><p><code>toLowerCase</code>方法用于将一个字符串全部转为小写，<code>toUpperCase</code>则是全部转为大写。它们<strong>都返回一个新字符串，不改变原字符串</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;Hello World&#x27;</span>.toLowerCase()<br><span class="hljs-comment">// &quot;hello world&quot;</span><br><br><span class="hljs-string">&#x27;Hello World&#x27;</span>.toUpperCase()<br><span class="hljs-comment">// &quot;HELLO WORLD&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-10-String-prototype-match"><a href="#4-10-String-prototype-match" class="headerlink" title="4.10 String.prototype.match()"></a>4.10 String.prototype.match()</h6><p><code>match</code>方法用于确定原字符串<strong>是否匹配某个子字符串</strong>，<strong>返回一个数组</strong>，成员为<strong>匹配的第一个字符串</strong>。如果没有找到匹配，则返回<code>null</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;cat, bat, sat, fat&#x27;</span>.match(<span class="hljs-string">&#x27;at&#x27;</span>) <span class="hljs-comment">// [&quot;at&quot;]</span><br><span class="hljs-string">&#x27;cat, bat, sat, fat&#x27;</span>.match(<span class="hljs-string">&#x27;xt&#x27;</span>) <span class="hljs-comment">// null</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>返回的数组还有<code>index</code>属性和<code>input</code>属性</strong>，分别表示匹配字符串开始的位置和<strong>原始字符串</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">var</span> matches = <span class="hljs-string">&#x27;cat, bat, sat, fat&#x27;</span>.match(<span class="hljs-string">&#x27;at&#x27;</span>);<br>matches.index <span class="hljs-comment">// 1</span><br>matches.input <span class="hljs-comment">// &quot;cat, bat, sat, fat&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-11-String-prototype-search-，String-prototype-replace"><a href="#4-11-String-prototype-search-，String-prototype-replace" class="headerlink" title="4.11 String.prototype.search()，String.prototype.replace()"></a>4.11 String.prototype.search()，String.prototype.replace()</h6><p><code>search</code>方法的用法基本等同于<code>match</code>，但是返回值为<strong>匹配的第一个位置</strong>。如果没有找到匹配，则返回<code>-1</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;cat, bat, sat, fat&#x27;</span>.search(<span class="hljs-string">&#x27;at&#x27;</span>) <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<p><code>replace</code>方法用于替换匹配的子字符串，<strong>一般情况下只替换第一个匹配</strong>（除非使用带有<code>g</code>修饰符的正则表达式）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-string">&#x27;aaa&#x27;</span>.replace(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>) <span class="hljs-comment">// &quot;baa&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-12-String-prototype-split"><a href="#4-12-String-prototype-split" class="headerlink" title="4.12 String.prototype.split()"></a>4.12 String.prototype.split()</h6>
             </div>
             <hr>
             <div>
